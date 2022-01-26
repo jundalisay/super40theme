@@ -1,0 +1,19 @@
+{{ "<!-- mat -->" | safeHTML }}
+
+<section>
+  <div class="inner align-center">
+    <h2>Everything is a wave that manifests as a particle</h2>
+    <h4><i>The analog universe streams in 'real-definition'</i></h4>
+  </div>
+  <div class="inner row">
+    {{ range .Site.Params.Sup.icons }}
+    <div class="4u 12u$(medium) align-center">
+      <i class="icon" style="color: #44484a !important">{{ .icon | safeHTML }}</i>
+      <h3 style="color: #44484a !important">{{ .title }}</h3>
+      <a href="{{ .url }}" class="button fit small">{{ .btext }}</a>
+    </div>
+    {{ end }}
+  </div>      
+    <br>
+  <br>        
+</section>

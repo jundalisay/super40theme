@@ -1,0 +1,33 @@
+{{ "<!-- Header -->" | safeHTML }}
+<header id="header" class="alt">
+  <a href="{{ .Site.BaseURL }}" class="logo">
+    {{ if .Site.Params.Navigation.logo }}
+      <img src="{{ .Site.Params.baseURL }}/{{ .Site.Params.Navigation.logo }}" width=100px alt="" />
+    {{ else }}
+      <strong>{{ .Site.Params.Navigation.title }}</strong> 
+      <span>{{ .Site.Params.Navigation.subtitle }}</span>
+    {{ end }}</a>
+  <nav>
+    <a href="#menu">{{ .Site.Params.Navigation.menu }}</a>
+  </nav>
+</header>
+
+
+
+{{ "<!-- Menu -->" | safeHTML }}
+<nav id="menu">
+  <ul class="links">
+    {{ range .Site.Params.Navigation.links }}
+        <li><a href="{{ .url | absURL}}">{{ .name }}</a></li>
+    {{ end }}
+
+  </ul>
+  <ul class="actions vertical small">
+    {{ range .Site.Params.Navigation.button1 }}
+      <li><a href="{{ .url | absURL}}" class="button small special fit">{{ .name }}</a></li>
+    {{ end }}
+    {{ range .Site.Params.Navigation.button2 }}
+      <li><a href="{{ .url | absURL}}" class="button small fit">{{ .name }}</a></li>
+    {{ end }}
+  </ul>
+</nav>

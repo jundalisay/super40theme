@@ -1,0 +1,99 @@
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="language" content="{{ site.LanguageCode | default `en-US` }}" />
+
+	{{ with .Params.description }}
+		<meta name="description" content="{{ . }}">
+	{{ else }}
+		<meta name="description" content="{{ .Site.Params.description }}">
+	{{ end }}
+
+	{{ with .Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+
+	<title>{{ .Title }}</title>
+	
+	<link href="{{ .Permalink }}" rel="canonical" />
+	{{ "<!-- Stylesheets -->" | safeHTML }}
+	<!--[if lte IE 8]><script src="js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="{{ "css/main.css" | absURL}}"/>
+	<!--[if lte IE 9]><link rel="stylesheet" href="{{ "css/ie9.css" }}"/><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="{{ "css/ie8.css" }}"/><![endif]-->
+
+
+	{{ range .Site.Params.custom_css }}
+		<link rel="stylesheet" href="{{ . | absURL }}">
+	{{ end }}
+
+	{{ "<!-- Custom Fonts -->" | safeHTML }}
+	<!-- <link href="{{ "css/font-awesome.min.css" | absURL }}" rel="stylesheet" type="text/css"> -->
+
+	{{ with .Site.Params.favicon }}
+		<link rel="shortcut icon" type="image/x-icon" href="{{ . | absURL }}">
+		<link rel="apple-touch-icon" href="{{ . | absURL }}" />	
+		<link rel="icon" type="image/x-icon" href="{{ . | absURL }}">
+	{{ end }}
+
+	{{ "<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->" | safeHTML }}
+	{{ "<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->" | safeHTML }}
+	{{ "<!--[if lt IE 9]>" | safeHTML }}
+	<script src="js/ie/html5shiv.js"></script>
+	<script src="js/ie/html5shiv.jsrespond.min.js"></script>
+	{{ "<![endif]-->" | safeHTML }}
+
+	{{ $image_path := .Params.image | default site.Params.image -}}
+  <meta property="og:image" content="{{ $image_path | absURL }}" />
+  <meta property="og:description" content="{{ .Description }}" />
+    
+  <meta name="twitter:image" content="{{ $image_path | absURL }}"/>
+	<meta name="twitter:title" content="{{ .Title }}"/>
+	<meta name="twitter:description" content="{{ .Description }}"/>
+
+
+	{{ if .Params.Image }}
+		<script type="application/ld+json">
+	    {
+	      "@context": "https://schema.org",
+	      "@type": "Article",
+	      "headline": "{{ .Title }}",
+	      "datePublished": "{{ .Date }}",
+	      "image": {{ .Params.Image | absURL }}
+	    }
+		</script>
+
+	{{ else }}
+
+    <script type="application/ld+json">
+		  {
+		    "@context": "https://schema.org",
+		    "@type": "NGO",
+		    "email": "superphysicsone(at)gmail.com",
+		    "name": "Superphysics",
+		    "url": "https://superphysics.one",
+		    "logo": "https://superphysics.one/logo.png",
+		    "foundingDate": "2018",
+		    "founders": [
+		       {
+		       "@type": "Person",
+		       "name": "Juan"
+		       },
+		       {
+		       "@type": "Person",
+		       "name": "Lam"
+		       } 
+		    ]
+		  }    	
+    </script>
+  {{ end }}
+  
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PGCB83R0S9"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-PGCB83R0S9');
+	</script>
+</head>

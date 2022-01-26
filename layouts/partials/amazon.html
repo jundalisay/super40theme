@@ -1,0 +1,83 @@
+<style type="text/css">
+  #low {
+    background-image: url(https://ik.imagekit.io/sora/photos/amazonfire2_mdlaej-VY.jpg);
+    text-align: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    padding: 6em 0 2em 0 ;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 0 !important;
+    cursor: default;
+/*    height: 60vh;*/
+    margin-bottom: 2em;
+/*    max-height: 32em;
+    min-height: 22em;*/
+    position: relative;
+/*    top: -3.25em;*/
+  }
+
+  small {
+    font-size: 16px;
+  }
+</style>
+
+<section id="low" class="major">
+  <div class="inner">
+    <header class="major">
+      <h1 style="background-color: white; opacity: 0.7">Stop the burning!</h1>
+    </header>
+    <div class="content" style="background-color: white; opacity: 0.7">
+      <p>Want to end the Corona virus? End the war against the Amazon</p>
+      <small>The economic decline in 2020 came from the corona virus which came from the war against the Amazon which began in 2019. This is similar to the Spanish flu which came with World War I and ended after that war ended, and the Black Death which came with the Mongol Conquest. Therefore, ending the destruction of the Amazon, whether by force through NATO or by sanctions, is the best and cheapest way to end the virus. Without it, the virus will merely mutate, rendering current vaccines less effective while further reducing economies.</small>
+    </div>
+    <br>
+
+    <div class="row content">
+
+      <div class="6u 12u$(small) box" style="background-color: darkcyan;">
+        <small style="color: white">Time it takes for the dialectical method to come up with a solution to Covid</small>
+        <h2 style="color: white">90 days</h2>
+      </div>
+      <div class="6u$ 12u$(small) box" style="background-color: darkred; color: white">
+        <small class="text-white">Time it takes for the scientfic method to come up with a solution to Covid</small>
+        <h2 class="text-danger" style="color: white" id="time"></h2>
+      </div>  
+    </div>
+  </div>
+</section>
+
+<!--   content: ""
+  quote: "In the spice islands, the Dutch burn all the spiceries beyond what they expect to dispose of in Europe with profit. This **savage policy** has now almost completely destroyed all those trees. <cite>The Simple Wealth Of Nations By Adam Smith, Book 4</cite>"
+  quota: "https://sorasystem.sirv.com/avatars/smith.png"
+ -->
+
+<script type="text/javascript">
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+    var start = new Date("Mar 1, 2020 00:00:00").getTime();
+    var solve = new Date("May 30, 2020 00:00:00").getTime();
+    var distance = now - start;
+    var ddistance = solve - start;    
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("time").innerHTML = days + "days " + hours + "hours "
+    + minutes + "minutes " + seconds + "seconds ";
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+
+</script>

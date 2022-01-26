@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+
+	{{ partial "header.html" . }}
+	<body>
+
+	{{ "<!-- Wrapper -->" | safeHTML }}
+		<div id="wrapper">
+
+		{{ partial "nav.html" . }}
+
+		{{ partial "banner.html" . }}
+
+
+
+		{{ "<!-- Main -->" | safeHTML }}
+			<div id="main">
+
+			{{ partial "iconssup.html" . }}
+
+				{{ if .Site.Params.Tiles.enable }}
+					{{ partial "tile.html" . }}
+				{{ end }}
+
+			{{ partial "iconsmat.html" . }}		
+
+			{{ partial "iconsmed.html" . }}	
+
+			{{ partial "iconssoc.html" . }}	
+
+				{{ if .Site.Params.Two.enable }}
+					{{ partial "two.html" . }}
+				{{ end }}
+
+			</div>
+
+		{{ "<!-- Contact -->" | safeHTML}}
+			{{ if .Site.Params.Contact.enable }}
+				{{ partial "contact.html" . }}
+			{{ end }}
+
+		{{ "<!-- Footer -->" | safeHTML}}
+			{{ if .Site.Params.Footer.enable }}
+				{{ partial "footer.html" . }}
+			{{ end }}
+
+		</div>
+
+	{{ "<!-- Scripts -->" | safeHTML}}
+		{{ partial "js.html" . }}
+
+	</body>
+</html>

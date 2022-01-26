@@ -1,0 +1,16 @@
+{{ "<!-- Two -->" | safeHTML}}
+<section id="two" style="background: black;">
+  <br>
+  <br>    
+    <div class="inner">
+        <header class="major">
+            <h2 style="color: white;">{{ .Site.Params.Two.title}}</h2>
+        </header>
+        <p style="color: whitesmoke;">{{ .Site.Params.Two.subtitle }}</p>
+        <ul class="actions">
+            <li><a href="{{ .Site.Params.Two.url | absURL}}" class="button next white" style="color: white !important">{{ .Site.Params.Two.buttonText }}</a></li>
+        </ul>
+    </div>
+  <br>
+  <br>        
+</section>

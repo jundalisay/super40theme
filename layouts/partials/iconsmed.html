@@ -1,0 +1,39 @@
+{{ "<!-- med -->" | safeHTML }}
+
+<section>
+  <br>
+  <br>
+  <div class="inner align-center">
+    <a href="/medical">    
+      <img src="https://sorasystem.sirv.com/icons/spmed.png" alt="" style="width: 100px;" class="rounded-circle">
+    </a>
+    <h2>Medical Superphysics</h2>
+    <h4><i>The dialectics of the soul</i></h4>
+  </div>
+  <div class="inner row">
+    {{ range .Site.Params.Supmed.icons }}
+    <div class="4u 12u$(medium) align-center">
+      <i class="icon" style="color: crimson !important">{{ .icon  | safeHTML }}</i>
+      <h3 style="color: #44484a !important">{{ .title }}</h3>
+      <a href="{{ .url }}" class="button fit small">{{ .btext }}</a>
+    </div>
+    {{ end }}
+  </div>
+  <br>
+  <br>            
+</section>
+
+
+<section id="one" class="tiles">
+    {{ range .Site.Params.Meds.post }}
+    <article>
+        <span class="image">
+            <img src="{{ .image }}" alt="" />
+        </span>
+        <header class="major">
+            <h3 style="color: white !important"><a href="{{ .url }}" class="link">{{ .title }}</a></h3>
+            <p style="color: white !important">{{ .subtitle }}</p>
+        </header>
+    </article>
+    {{ end }}
+</section>

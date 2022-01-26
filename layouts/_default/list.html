@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="{{ site.LanguageCode | default `en-US` }}">
+  {{ "<!-- Header -->" | safeHTML }}
+  {{ partial "header.html" . }}
+
+  <body>
+
+  <style type="text/css">
+    #banner {
+      background-image: url("{{ .Params.banner }}");
+    }
+    #banner:after {
+      background-color: black;
+    }
+  </style>
+
+  {{ "<!-- Wrapper -->" | safeHTML }}
+  <div id="wrapper">
+
+  {{ partial "nav.html" . }}
+
+  {{ "<!-- Main -->" | safeHTML }}
+  <div id="main">
+
+    {{ if or 
+      (eq .Section "analysis") 
+      (eq .Section "articles") 
+      (eq .Section "fallacies") 
+      (eq .Section "news") 
+      (eq .Section "research") 
+      (eq .Section "solutions") 
+    }}
+    
+    <section id="banner" class="style2">
+      <div class="inner">
+        {{ if .Params.image }}
+          <span class="image">
+            <img src="{{ .Params.image }}" alt="" />    
+          </span>
+        {{ end }}
+        <header class="major">
+          <h1 style="color: white">{{ .Title }}</h1>
+          <br>
+          <p style="color: white">{{ .Description }}</p>
+        </header>
+        <div class="content">
+          {{ .Content }}
+        </div>
+      </div>
+    </section>
+
+<!--     News -->
+    <section class="section inner">
+      <div class="row">
+        {{ range .Params.items }}
+          <div class="4u 12u$(medium) box">
+            <small class="text-primary">{{ .date }}</small>
+            <h3>{{ .title | markdownify }}</h3>
+            <p>{{ .content | markdownify }}</p>
+            <br>
+            <a href="{{.Permalink}}" title="{{ i18n "readmore" }} - {{ .Title }}" class="btn btn-primary btn-sm">{{ i18n "readmore" }}</a>
+          </div>
+        {{ end }}
+      </div>
+    </section>
+
+
+    <section id="two" class="spotlights">
+      {{ range .Pages }}
+      <section>
+        <a href="{{ .Permalink }}" class="image">
+          <img src="{{ .Params.image }}" alt="" data-position="center center" />                
+        </a>
+        <div class="content">
+          <div class="inner">
+            <header class="major">
+              <h3>{{ .Title }}</h3>
+            </header>
+            <p>{{ .Description | markdownify }}</p>
+            <br>
+            <ul class="actions fit">
+              <li><a href="{{ .Permalink }}" class="fit special small button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" height="15" fill="white"><!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"/></svg>
+
+              &nbsp;</i>{{ .Params.Btext }}</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      {{ end }}
+    </section>
+
+
+
+    {{ else }}
+
+<!-- indexes with youtube + backimage -->
+
+    <section id="banner" class="major">
+      <div class="inner">
+
+        <div class="content">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" height="100px" class="img-fluid">
+    <!--       <ul class="actions">
+              <li><a href="#one" class="button next scrolly">.Site.Params.Banner.buttonText</a></li>
+          </ul> -->
+        </div>
+        <div class="centered">
+          <h2 style="color:white">{{ .Title }}</h2>
+          <p style="color:white">{{ .Description | markdownify }}</p>      
+          <iframe src="https://www.youtube.com/embed/{{ .Params.youtube }}" allowfullscreen frameborder="0"></iframe>
+        </div>      
+      </div>
+    </section>
+
+
+
+    <section id="two" class="spotlights">
+      {{ range .Pages }}
+        <section>
+          <a href="{{ .Permalink }}" class="image">
+            <img src="{{ .Params.image }}" alt="" data-position="center center" />                
+          </a>
+          <div class="content">
+            <div class="inner">
+              <header class="major">
+                <h3>{{ .Title }}</h3>
+              </header>
+              <p>{{ .Description }}</p>
+              <ul class="actions fit small" style="margin-top: 15px;">
+                <li><a href="{{ .Permalink }}" class="button fit small special">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" height="15" fill="white"><!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"/></svg>
+                {{ .Params.Btext }}</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      {{ end }}
+
+      {{ partial "amazon.html" . }}
+    </section>
+
+    {{ end }}
+
+
+  </div>
+      
+  {{ "<!-- Footer -->" | safeHTML}}
+    {{ if .Site.Params.Contact.enable }}
+      {{ partial "contact.html" . }}
+    {{ end }}
+
+	{{ partial "footer.html" . }}
+    
+  </div>
+
+  {{ "<!-- Scripts -->" | safeHTML}}
+      {{ partial "js.html" . }}
+      
+  </body>
+</html>
